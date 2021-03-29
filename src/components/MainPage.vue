@@ -28,14 +28,19 @@ export default {
     Header,
     MiddleBlock,
     ResultList,
-    Logo
-  }
+    Logo,
+  },
 };
 </script>
 
 <style scoped>
 .main-block {
   width: 1000px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(31, 30, 30, 0.8);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(31, 30, 30, 0.8);
+  box-shadow: 0px 0px 20px 2px rgba(31, 30, 30, 0.8);
+
 }
 
 .footer-block {

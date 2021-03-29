@@ -1,29 +1,19 @@
 <template>
   <div class="middle-block">
     <div class="info-block">
-      <Info message="6 movies found" />
+      <Info message="Films by drama genre" />
     </div>
     <div class="buttons-block">
-      <FilterButtons
-        message="SORT BY"
-        firstButtonTitle="RELEASE DATE"
-        secondButtonTitle="RATING"
-        firstOption="releaseDate"
-        secondOption="rating"
-        options="sort-option"
-      />
     </div>
   </div>
 </template>
 
 <script>
 import Info from "@/components/Info.vue";
-import FilterButtons from "@/components/FilterButtons.vue";
 
 export default {
   components: {
-    Info,
-    FilterButtons
+    Info
   }
 };
 </script>

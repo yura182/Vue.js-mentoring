@@ -63,15 +63,15 @@ export default {
   color: white;
   font-size: 26px;
   font-weight: 100;
-  padding: 30px 0 10px 40px;
+  padding: 30px 60px 10px 60px;
   letter-spacing: 2px;
 }
 
 .search-bar {
-  padding: 5px 40px;
+  padding: 5px 60px;
 }
 
 .search-by {
-  padding: 5px 30px;
+  padding: 5px 60px;
 }
 </style>

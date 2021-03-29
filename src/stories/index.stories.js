@@ -8,8 +8,8 @@ import Logo from "@/components/Logo";
 import Header from "@/components/Header";
 import MiddleBlock from "@/components/MiddleBlock";
 import ResultList from "@/components/ResultList";
-import FilmDetails from "@/components/FilmDetails";
-import Test from "@/components/Test";
+import FilmDetailsHeader from "@/components/FilmDetailsHeader";
+import MainPage from "@/components/MainPage";
 
 import "../app.scss";
 
@@ -100,7 +100,7 @@ export const resultList = () => ({
 export const filmDetails = () => ({
   render() {
     return (
-      <FilmDetails
+      <FilmDetailsHeader
         imageSrc="https://cdn.shopify.com/s/files/1/0359/2201/8348/products/kong-skull-island-movie-poster-2017-1020776812.jpg?v=1598633225"
         title="Kong: Skull Island"
         year="2017"
@@ -113,8 +113,8 @@ export const filmDetails = () => ({
   }
 });
 
-export const test = () => ({
+export const mainPage = () => ({
   render() {
-    return <Test />;
+    return <MainPage />;
   }
 });

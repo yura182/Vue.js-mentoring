@@ -2,8 +2,13 @@
   <div class="header">
     <div class="header-bg"></div>
     <div class="header-content">
-      <div class="header-logo">
-        <Logo firstPart="netflix" secondPart="roulette" />
+      <div class="header-top-container">
+        <div class="header-logo">
+          <Logo firstPart="netflix" secondPart="roulette" />
+        </div>
+        <div class="main-page-button">
+          <router-link to="/"><img src="../assets/search.svg"/></router-link>
+        </div>
       </div>
 
       <div class="film-info">
@@ -35,7 +40,7 @@ import Logo from "@/components/Logo.vue";
 
 export default {
   components: {
-    Logo
+    Logo,
   },
   props: {
     imageSrc: String,
@@ -44,8 +49,8 @@ export default {
     genre: String,
     duration: Number,
     rating: Number,
-    description: String
-  }
+    description: String,
+  },
 };
 </script>
 
@@ -70,34 +75,27 @@ export default {
 }
 
 .header-logo {
-  padding: 10px 0 0 30px;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 .film-poster {
-  color: white;
-  font-size: 26px;
-  font-weight: 100;
   padding: 0px 0 10px 40px;
-  letter-spacing: 2px;
   display: inline-block;
   vertical-align: middle;
 }
 
 .film-img {
-  height: 220px;
-}
-
-.film-title {
-  color: white;
+  height: 260px;
 }
 
 .film-row {
-  padding-top: 10px;
+  padding-top: 12px;
   display: inline-block;
 }
 
 .right-info {
-  padding-left: 20px;
+  padding-left: 30px;
   display: inline-block;
   vertical-align: top;
 }
@@ -107,20 +105,21 @@ export default {
 }
 
 .film-title {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 200;
   display: inline-block;
+  color: white;
 }
 
 .film-rating {
   border-radius: 50%;
   /* width:45px; */
-  padding: 4px 7px;
+  padding: 8px 11px;
   margin-left: 10px;
   font-weight: 400;
   border-color: white;
-  font-size: 22px;
-  color: rgb(24, 105, 21);
+  font-size: 20px;
+  color: #a1e66f;
   display: inline-block;
   border-style: solid;
   border-width: 1px;
@@ -128,28 +127,58 @@ export default {
 
 .film-genre {
   color: white;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 100;
+  letter-spacing: 1px;
 }
 .film-description {
   color: white;
 }
 .film-year {
-  font-size: 18px;
+  font-size: 20px;
   color: #f65261;
   display: inline-block;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 .film-duration {
   font-size: 18px;
-  padding-left: 10px;
+  padding-left: 18px;
   color: #f65261;
   display: inline-block;
+  font-weight: 100;
+  letter-spacing: 1px;
 }
 
 .film-description {
   margin-top: 20px;
   text-align: justify;
   width: 500px;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.header-top-container {
+  display: flex;
+  padding: 10px 12px;
+}
+
+.main-page-button {
+  order: 2;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.main-page-button img {
+  width: 20px;
+  color: green;
+}
+
+svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  vertical-align: bottom;
 }
 </style>
