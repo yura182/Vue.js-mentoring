@@ -13,14 +13,14 @@
 export default {
   data() {
     return {
-      searchText: "",
+      searchText: ""
     };
   },
   methods: {
     onSubmit() {
       console.log("Search text: " + this.searchText);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -31,12 +31,25 @@ export default {
 
 input {
   border-radius: 5px !important;
-  background-color: rgba(66, 66, 66, 0.8);
+  border-color: rgba(35, 35, 35, 0.8);
+  background-color: rgba(35, 35, 35, 0.8);
   color: white;
+  padding: 0 10px;
 }
 
 .form-control:focus {
-  background-color: rgba(66, 66, 66, 0.8);
+  background-color: rgba(35, 35, 35, 0.8);
+  border-color: rgba(35, 35, 35, 0.8);
   color: white;
+  box-shadow: 0 0 0 0.1rem rgb(246 82 97 / 25%);
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.1rem rgb(247 108 121 / 50%);
+}
+
+.films-button-search {
+  font-size: 12px;
+  padding: 9px 35px;
 }
 </style>
