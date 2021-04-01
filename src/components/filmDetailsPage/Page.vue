@@ -1,7 +1,7 @@
 <template>
   <div class="main-block">
     <div class="firs-block">
-      <FilmDetailsHeader
+      <FilmInfo
         imageSrc="https://www.vintagemovieposters.co.uk/wp-content/uploads/2020/12/IMG_1021-scaled.jpeg"
         title="Back To The Future"
         year="1985"
@@ -12,10 +12,10 @@
       />
     </div>
     <div class="second-block">
-      <MiddleBlockDetailsPage />
+      <MiddleBlock />
     </div>
     <div class="third-block">
-      <ResultList />
+      <SimilarList />
     </div>
     <div class="footer-block">
       <div class="footer-logo">
@@ -26,18 +26,18 @@
 </template>
 
 <script>
-import FilmDetailsHeader from "@/components/FilmDetailsHeader";
-import MiddleBlockDetailsPage from "@/components/MiddleBlockDetailsPage";
-import ResultList from "@/components/ResultList";
+import FilmInfo from "@/components/filmDetailsPage/FilmInfo";
+import MiddleBlock from "@/components/filmDetailsPage/MiddleBlock";
+import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
 
 export default {
   components: {
-    FilmDetailsHeader,
-    MiddleBlockDetailsPage,
-    ResultList,
-    Logo,
-  },
+    FilmInfo,
+    MiddleBlock,
+    SimilarList,
+    Logo
+  }
 };
 </script>
 

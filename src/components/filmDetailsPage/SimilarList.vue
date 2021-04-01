@@ -2,7 +2,7 @@
   <div class="films-list">
     <div class="film-card" v-for="film in films" v-bind:key="film.title">
       <router-link to="/film-details"
-        ><FilmCardPLP
+        ><FilmCard
           :imageSrc="film.image"
           :title="film.title"
           :year="film.year"
@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import FilmCardPLP from "@/components/FilmCardPLP";
+import FilmCard from "@/components/FilmCard";
 export default {
   components: {
-    FilmCardPLP,
+    FilmCard
   },
   data() {
     return {

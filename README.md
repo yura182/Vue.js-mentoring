@@ -1,4 +1,7 @@
-# vue-mentoring
+# Vue.js mentoring program
+
+### Live preview
+[https://yura182.github.io/Vue.js-mentoring/](https://yura182.github.io/Vue.js-mentoring/)
 
 ## Project setup
 ```
@@ -24,6 +27,3 @@ yarn test:unit
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

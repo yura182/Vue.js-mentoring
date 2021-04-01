@@ -7,7 +7,9 @@
           <Logo firstPart="netflix" secondPart="roulette" />
         </div>
         <div class="main-page-button">
-          <router-link to="/"><img src="../assets/search.svg"/></router-link>
+          <router-link to="/"
+            ><img src="../../assets/search.svg" alt="main-page"
+          /></router-link>
         </div>
       </div>
 
@@ -40,7 +42,7 @@ import Logo from "@/components/Logo.vue";
 
 export default {
   components: {
-    Logo,
+    Logo
   },
   props: {
     imageSrc: String,
@@ -49,8 +51,8 @@ export default {
     genre: String,
     duration: Number,
     rating: Number,
-    description: String,
-  },
+    description: String
+  }
 };
 </script>
 
@@ -67,7 +69,7 @@ export default {
   width: 100%;
   height: 352px;
 
-  background-image: url("../assets/header_background.jpg");
+  background-image: url("../../assets/header_background.jpg");
   background-size: 80%;
   filter: blur(2px);
   filter: brightness(0.15);
@@ -131,9 +133,11 @@ export default {
   font-weight: 100;
   letter-spacing: 1px;
 }
+
 .film-description {
   color: white;
 }
+
 .film-year {
   font-size: 20px;
   color: #f65261;
@@ -141,6 +145,7 @@ export default {
   font-weight: 100;
   letter-spacing: 1px;
 }
+
 .film-duration {
   font-size: 18px;
   padding-left: 18px;

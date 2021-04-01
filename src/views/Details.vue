@@ -1,11 +1,11 @@
 <template>
   <div class="home-main">
-   <FilmDetailsPage />
+    <FilmDetailsPage />
   </div>
 </template>
 
 <script>
-import FilmDetailsPage from "@/components/FilmDetailsPage.vue";
+import FilmDetailsPage from "@/components/filmDetailsPage/Page.vue";
 
 export default {
   name: "Details",

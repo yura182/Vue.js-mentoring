@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
-import MiddleBlock from "@/components/MiddleBlock";
-import ResultList from "@/components/ResultList";
+import Header from "@/components/mainPage/Header";
+import MiddleBlock from "@/components/mainPage/MiddleBlock";
+import ResultList from "@/components/mainPage/ResultList";
 import Logo from "@/components/Logo";
 
 export default {

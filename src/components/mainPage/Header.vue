@@ -48,7 +48,7 @@ export default {
   width: 100%;
   height: 252px;
 
-  background-image: url("../assets/header_background.jpg");
+  background-image: url("../../assets/header_background.jpg");
   background-size: 80%;
   filter: blur(2px);
   filter: brightness(0.35);

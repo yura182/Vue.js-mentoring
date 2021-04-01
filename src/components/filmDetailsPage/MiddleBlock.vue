@@ -3,8 +3,7 @@
     <div class="info-block">
       <Info message="Films by drama genre" />
     </div>
-    <div class="buttons-block">
-    </div>
+    <div class="buttons-block"></div>
   </div>
 </template>
 

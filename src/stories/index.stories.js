@@ -1,15 +1,12 @@
-import { action } from "@storybook/addon-actions";
-import { linkTo } from "@storybook/addon-links";
-
 import SearchBar from "@/components/SearchBar.vue";
 import FilterButtons from "@/components/FilterButtons.vue";
-import FilmCardPLP from "@/components/FilmCardPLP";
+import FilmCard from "@/components/FilmCard";
 import Logo from "@/components/Logo";
-import Header from "@/components/Header";
-import MiddleBlock from "@/components/MiddleBlock";
-import ResultList from "@/components/ResultList";
-import FilmDetailsHeader from "@/components/FilmDetailsHeader";
-import MainPage from "@/components/MainPage";
+import Header from "@/components/mainPage/Header";
+import MiddleBlock from "@/components/mainPage/MiddleBlock";
+import ResultList from "@/components/mainPage/ResultList";
+import FilmDetailsHeader from "@/components/filmDetailsPage/FilmInfo";
+import MainPage from "@/components/mainPage/Page";
 
 import "../app.scss";
 
@@ -50,7 +47,7 @@ export const orderFilter = () => ({
 export const filmCardPLPKong = () => ({
   render() {
     return (
-      <FilmCardPLP
+      <FilmCard
         imageSrc="https://cdn.shopify.com/s/files/1/0359/2201/8348/products/kong-skull-island-movie-poster-2017-1020776812.jpg?v=1598633225"
         title="Kong: Skull Island"
         year="2017"
@@ -63,7 +60,7 @@ export const filmCardPLPKong = () => ({
 export const filmCardPLPBohemianRhapsody = () => ({
   render() {
     return (
-      <FilmCardPLP
+      <FilmCard
         imageSrc="https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/1800/bohemian-rhapsody-web.jpg"
         title="Bohemian Rhapsody"
         year="2010"
