@@ -1,7 +1,7 @@
 <template>
   <div class="middle-block">
     <div class="info-block">
-      <Info :message="moviesFoundMessage" />
+      <Info :message="foundMoviesMessage" />
     </div>
     <div class="buttons-block">
       <FilterButtons
@@ -25,6 +25,7 @@ import {
   RELEASE_DATE_OPTION,
   SORT_INPUT
 } from "@/core/constants";
+import { mapGetters } from "vuex";
 
 export default {
   name: "MiddleBlock",
@@ -35,13 +36,24 @@ export default {
   data() {
     return {
       moviesFoundMessage: I18Y[LOCALE].MOVIES_FOUND,
-      sortByMessage: I18Y[LOCALE].SORT_BY,
-      firstButtonMessage: I18Y[LOCALE].RELEASE_DATE,
-      secondButtonMessage: I18Y[LOCALE].RATING,
+      sortByMessage: I18Y[LOCALE].SORT_BY.toUpperCase(),
+      firstButtonMessage: I18Y[LOCALE].RELEASE_DATE.toUpperCase(),
+      secondButtonMessage: I18Y[LOCALE].RATING.toUpperCase(),
       firstOption: RELEASE_DATE_OPTION,
       secondOption: RATING_OPTION,
       options: SORT_INPUT
     };
+  },
+  computed: {
+    ...mapGetters(["moviesCount"]),
+    foundMoviesMessage() {
+      if (!this.moviesCount) {
+        return "No movies found";
+      } else if (this.moviesCount === 1) {
+        return this.moviesCount + " " + I18Y[LOCALE].MOVIE_FOUND;
+      }
+      return this.moviesCount + " " + I18Y[LOCALE].MOVIES_FOUND;
+    }
   }
 };
 </script>

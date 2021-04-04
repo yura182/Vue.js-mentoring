@@ -2,17 +2,17 @@
   <div class="main-block">
     <div class="firs-block">
       <FilmInfo
-        imageSrc="https://www.vintagemovieposters.co.uk/wp-content/uploads/2020/12/IMG_1021-scaled.jpeg"
-        title="Back To The Future"
-        year="1985"
-        genre="Sci-Fi"
-        rating="8.8"
-        description="Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis. Written by Zemeckis and Bob Gale, it stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Doctor Emmett 'Doc' Brown (Lloyd)"
-        duration="155"
+        :imageSrc="movie.poster_path"
+        :title="movie.title"
+        :year="movie.release_date | parseYear"
+        :genre="movie.genres | parseGenre"
+        :rating="movie.vote_average"
+        :description="movie.overview"
+        :duration="movie.runtime"
       />
     </div>
     <div class="second-block">
-      <MiddleBlock />
+      <MiddleBlock :infoMessage="middleText" />
     </div>
     <div class="third-block">
       <SimilarList />
@@ -31,6 +31,8 @@ import MiddleBlock from "@/components/filmDetailsPage/MiddleBlock";
 import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
 import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
+import { mapGetters } from "vuex";
+import { I18Y, LOCALE } from "@/core/i18y";
 
 export default {
   name: "Page",
@@ -45,6 +47,25 @@ export default {
       logoFirstPart: LOGO_FIRST_PART,
       logoSecondPart: LOGO_SECOND_PART
     };
+  },
+  computed: {
+    ...mapGetters(["findMovieById"]),
+    movie() {
+      return this.findMovieById(this.currentMovieId);
+    },
+    middleText() {
+      return (
+        I18Y[LOCALE].FILMS_BY +
+        " " +
+        this.$options.filters.getOneGenre(this.movie.genres).toLowerCase() +
+        " " +
+        I18Y[LOCALE].GENRE.toLowerCase()
+      );
+    },
+    currentMovieId() {
+      window.scrollTo(0, 0);
+      return this.$route.params.id;
+    }
   }
 };
 </script>

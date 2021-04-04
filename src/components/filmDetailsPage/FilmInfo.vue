@@ -20,7 +20,7 @@
         <div class="right-info">
           <div class="film-row">
             <div class="film-title">{{ title }}</div>
-            <div class="film-rating">{{ rating }}</div>
+            <div class="film-rating">{{ rating | parseRating }}</div>
           </div>
           <div class="film-genre">{{ genre }}</div>
           <div class="film-row">
@@ -105,7 +105,7 @@ export default {
 }
 
 .right-info {
-  padding-left: 30px;
+  padding-left: 50px;
   display: inline-block;
   vertical-align: top;
 }
@@ -115,7 +115,7 @@ export default {
 }
 
 .film-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 200;
   display: inline-block;
   color: white;
@@ -137,13 +137,9 @@ export default {
 
 .film-genre {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 100;
   letter-spacing: 1px;
-}
-
-.film-description {
-  color: white;
 }
 
 .film-year {
@@ -166,14 +162,15 @@ export default {
 .film-description {
   margin-top: 20px;
   text-align: justify;
-  width: 500px;
-  font-size: 12px;
+  width: 600px;
+  font-size: 13px;
   font-weight: 100;
+  color: white;
 }
 
 .header-top-container {
   display: flex;
-  padding: 10px 12px;
+  padding: 10px 30px;
 }
 
 .main-page-button {
