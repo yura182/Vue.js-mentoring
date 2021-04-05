@@ -1,0 +1,12 @@
+export default {
+  FILMS_BY_DRAMA_GENRE: "Films by drama genre",
+  SEARCH_HEADER: "FIND YOUR MOVIE",
+  SEARCH_BY: "SEARCH BY",
+  TITLE: "TITLE",
+  GENRE: "GENRE",
+  MOVIES_FOUND: "6 movies found",
+  SORT_BY: "SORT BY",
+  RELEASE_DATE: "RELEASE DATE",
+  RATING: "RATING",
+  SEARCH: "SEARCH"
+};

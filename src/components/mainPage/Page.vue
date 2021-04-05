@@ -24,6 +24,7 @@ import ResultList from "@/components/mainPage/ResultList";
 import Logo from "@/components/Logo";
 
 export default {
+  name: "Page",
   components: {
     Header,
     MiddleBlock,

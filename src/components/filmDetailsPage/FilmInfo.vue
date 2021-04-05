@@ -41,6 +41,7 @@
 import Logo from "@/components/Logo.vue";
 
 export default {
+  name: "FilmInfo",
   components: {
     Logo
   },

@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name: "FilterButtons",
   props: {
     message: String,
     firstButtonTitle: String,

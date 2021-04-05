@@ -15,6 +15,7 @@
 <script>
 import FilmCard from "@/components/FilmCard";
 export default {
+  name: "SimilarList",
   components: {
     FilmCard
   },

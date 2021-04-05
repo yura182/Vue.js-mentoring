@@ -1,7 +1,7 @@
 <template>
   <div class="middle-block">
     <div class="info-block">
-      <Info message="Films by drama genre" />
+      <Info :message="infoMessage" />
     </div>
     <div class="buttons-block"></div>
   </div>
@@ -9,10 +9,17 @@
 
 <script>
 import Info from "@/components/Info.vue";
+import { I18Y, LOCALE } from "@/core/i18y";
 
 export default {
+  name: "MiddleBlock",
   components: {
     Info
+  },
+  data() {
+    return {
+      infoMessage: I18Y[LOCALE].FILMS_BY_DRAMA_GENRE
+    };
   }
 };
 </script>

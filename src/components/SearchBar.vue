@@ -3,17 +3,21 @@
     <input type="text" class="form-control" v-model="searchText" />
     <div class="films-button-group">
       <button type="button" class="btn btn-primary films-button-search">
-        SEARCH
+        {{ searchButtonMessage }}
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import { I18Y, LOCALE } from "@/core/i18y";
+
 export default {
+  name: "SearchBar",
   data() {
     return {
-      searchText: ""
+      searchText: "",
+      searchButtonMessage: I18Y[LOCALE].SEARCH
     };
   },
   methods: {

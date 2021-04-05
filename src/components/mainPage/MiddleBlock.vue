@@ -1,13 +1,13 @@
 <template>
   <div class="middle-block">
     <div class="info-block">
-      <Info message="6 movies found" />
+      <Info :message="moviesFoundMessage" />
     </div>
     <div class="buttons-block">
       <FilterButtons
-        message="SORT BY"
-        firstButtonTitle="RELEASE DATE"
-        secondButtonTitle="RATING"
+        :message="sortByMessage"
+        :firstButtonTitle="firstButtonMessage"
+        :secondButtonTitle="secondButtonMessage"
         firstOption="releaseDate"
         secondOption="rating"
         options="sort-option"
@@ -19,11 +19,21 @@
 <script>
 import Info from "@/components/Info.vue";
 import FilterButtons from "@/components/FilterButtons.vue";
+import { I18Y, LOCALE } from "@/core/i18y";
 
 export default {
+  name: "MiddleBlock",
   components: {
     Info,
     FilterButtons
+  },
+  data() {
+    return {
+      moviesFoundMessage: I18Y[LOCALE].MOVIES_FOUND,
+      sortByMessage: I18Y[LOCALE].SORT_BY,
+      firstButtonMessage: I18Y[LOCALE].RELEASE_DATE,
+      secondButtonMessage: I18Y[LOCALE].RATING
+    };
   }
 };
 </script>

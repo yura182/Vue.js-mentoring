@@ -5,13 +5,13 @@
       <div class="header-logo">
         <Logo firstPart="netflix" secondPart="roulette" />
       </div>
-      <div class="search-header">FIND YOUR MOVIE</div>
+      <div class="search-header">{{ searchHeaderMessage }}</div>
       <div class="search-bar"><SearchBar /></div>
       <div class="search-by">
         <FilterButtons
-          message="SEARCH BY"
-          firstButtonTitle="TITLE"
-          secondButtonTitle="GENRE"
+          :message="searchByMessage"
+          :firstButtonTitle="titleMessage"
+          :secondButtonTitle="genreMessage"
           firstOption="title"
           secondOption="genre"
           options="search-by"
@@ -25,12 +25,22 @@
 import Logo from "@/components/Logo.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import FilterButtons from "@/components/FilterButtons.vue";
+import { I18Y, LOCALE } from "@/core/i18y";
 
 export default {
+  name: "Header",
   components: {
     Logo,
     SearchBar,
     FilterButtons
+  },
+  data() {
+    return {
+      searchHeaderMessage: I18Y[LOCALE].SEARCH_HEADER,
+      searchByMessage: I18Y[LOCALE].SEARCH_BY,
+      titleMessage: I18Y[LOCALE].TITLE,
+      genreMessage: I18Y[LOCALE].GENRE
+    };
   }
 };
 </script>

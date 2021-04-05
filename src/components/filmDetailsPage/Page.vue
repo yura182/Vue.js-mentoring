@@ -32,6 +32,7 @@ import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
 
 export default {
+  name: "Page",
   components: {
     FilmInfo,
     MiddleBlock,

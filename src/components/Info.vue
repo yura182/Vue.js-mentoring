@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: "Info",
   props: {
     message: {
       type: String

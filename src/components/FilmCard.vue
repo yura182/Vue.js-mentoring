@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name: "FilmCard",
   props: {
     imageSrc: String,
     title: String,
