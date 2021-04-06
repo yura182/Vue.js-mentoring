@@ -3,7 +3,7 @@
     <div class="header-bg"></div>
     <div class="header-content">
       <div class="header-logo">
-        <Logo firstPart="netflix" secondPart="roulette" />
+        <Logo :firstPart="logoFirstPart" :secondPart="logoSecondPart" />
       </div>
       <div class="search-header">{{ searchHeaderMessage }}</div>
       <div class="search-bar"><SearchBar /></div>
@@ -12,9 +12,9 @@
           :message="searchByMessage"
           :firstButtonTitle="titleMessage"
           :secondButtonTitle="genreMessage"
-          firstOption="title"
-          secondOption="genre"
-          options="search-by"
+          :firstOption="firstOption"
+          :secondOption="secondOption"
+          :options="options"
         />
       </div>
     </div>
@@ -26,6 +26,13 @@ import Logo from "@/components/Logo.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import FilterButtons from "@/components/FilterButtons.vue";
 import { I18Y, LOCALE } from "@/core/i18y";
+import {
+  TITLE_OPTION,
+  GENRE_OPTION,
+  SEARCH_BY_INPUT,
+  LOGO_FIRST_PART,
+  LOGO_SECOND_PART
+} from "@/core/constants";
 
 export default {
   name: "Header",
@@ -39,7 +46,12 @@ export default {
       searchHeaderMessage: I18Y[LOCALE].SEARCH_HEADER,
       searchByMessage: I18Y[LOCALE].SEARCH_BY,
       titleMessage: I18Y[LOCALE].TITLE,
-      genreMessage: I18Y[LOCALE].GENRE
+      genreMessage: I18Y[LOCALE].GENRE,
+      firstOption: TITLE_OPTION,
+      secondOption: GENRE_OPTION,
+      options: SEARCH_BY_INPUT,
+      logoFirstPart: LOGO_FIRST_PART,
+      logoSecondPart: LOGO_SECOND_PART
     };
   }
 };

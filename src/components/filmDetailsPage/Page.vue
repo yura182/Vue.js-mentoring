@@ -19,7 +19,7 @@
     </div>
     <div class="footer-block">
       <div class="footer-logo">
-        <Logo firstPart="netflix" secondPart="roulette" />
+        <Logo :firstPart="logoFirstPart" :secondPart="logoSecondPart" />
       </div>
     </div>
   </div>
@@ -30,6 +30,7 @@ import FilmInfo from "@/components/filmDetailsPage/FilmInfo";
 import MiddleBlock from "@/components/filmDetailsPage/MiddleBlock";
 import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
+import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
 
 export default {
   name: "Page",
@@ -38,6 +39,12 @@ export default {
     MiddleBlock,
     SimilarList,
     Logo
+  },
+  data() {
+    return {
+      logoFirstPart: LOGO_FIRST_PART,
+      logoSecondPart: LOGO_SECOND_PART
+    };
   }
 };
 </script>

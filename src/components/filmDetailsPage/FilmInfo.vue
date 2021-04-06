@@ -4,7 +4,7 @@
     <div class="header-content">
       <div class="header-top-container">
         <div class="header-logo">
-          <Logo firstPart="netflix" secondPart="roulette" />
+          <Logo :firstPart="logoFirstPart" :secondPart="logoSecondPart" />
         </div>
         <div class="main-page-button">
           <router-link to="/"
@@ -39,6 +39,7 @@
 
 <script>
 import Logo from "@/components/Logo.vue";
+import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
 
 export default {
   name: "FilmInfo",
@@ -53,6 +54,12 @@ export default {
     duration: Number,
     rating: Number,
     description: String
+  },
+  data() {
+    return {
+      logoFirstPart: LOGO_FIRST_PART,
+      logoSecondPart: LOGO_SECOND_PART
+    };
   }
 };
 </script>
