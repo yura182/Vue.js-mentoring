@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/Vue.js-mentoring/'
-  }
+  publicPath: "/Vue.js-mentoring/"
+};
