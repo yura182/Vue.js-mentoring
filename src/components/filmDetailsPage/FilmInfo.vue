@@ -15,21 +15,23 @@
 
       <div class="film-info">
         <div class="film-poster">
-          <img :src="imageSrc" class="film-img" alt="film" />
+          <img :src="movie.poster_path" class="film-img" alt="film" />
         </div>
         <div class="right-info">
           <div class="film-row">
-            <div class="film-title">{{ title }}</div>
-            <div class="film-rating">{{ rating | parseRating }}</div>
+            <div class="film-title">{{ movie.title }}</div>
+            <div class="film-rating">
+              {{ movie.vote_average | parseRating }}
+            </div>
           </div>
-          <div class="film-genre">{{ genre }}</div>
+          <div class="film-genre">{{ movie.genres | parseGenres }}</div>
           <div class="film-row">
-            <div class="film-year">{{ year }}</div>
-            <div class="film-duration">{{ duration }} min</div>
+            <div class="film-year">{{ movie.release_date | parseYear }}</div>
+            <div class="film-duration">{{ movie.runtime }} min</div>
           </div>
 
           <div class="film-description">
-            <p>{{ description }}</p>
+            <p>{{ movie.overview }}</p>
           </div>
         </div>
       </div>
@@ -47,13 +49,7 @@ export default {
     Logo
   },
   props: {
-    imageSrc: String,
-    title: String,
-    year: Number,
-    genre: String,
-    duration: Number,
-    rating: Number,
-    description: String
+    movie: Object
   },
   data() {
     return {

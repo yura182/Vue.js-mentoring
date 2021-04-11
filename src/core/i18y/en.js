@@ -9,5 +9,6 @@ export default {
   RATING: "Rating",
   SEARCH: "Search",
   MOVIE_FOUND: "movie found",
-  MOVIES_FOUND: "movies found"
+  MOVIES_FOUND: "movies found",
+  NO_MOVIES_FOUND: "No movies found"
 };

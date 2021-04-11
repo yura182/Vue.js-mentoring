@@ -1,13 +1,9 @@
 <template>
   <div class="films-list">
-    <div class="film-card" v-for="film in movies" v-bind:key="film.id">
-      <router-link :to="{ name: 'Film details', params: { id: film.id } }"
-        ><FilmCard
-          :imageSrc="film.poster_path"
-          :title="film.title"
-          :year="film.release_date | parseYear"
-          :genre="film.genres | getOneGenre"
-      /></router-link>
+    <div class="film-card" v-for="movie in movies" v-bind:key="movie.id">
+      <router-link :to="filmRoute(movie.id)">
+        <FilmCard :movie="movie" />
+      </router-link>
     </div>
   </div>
 </template>
@@ -15,6 +11,8 @@
 <script>
 import FilmCard from "@/components/FilmCard";
 import { mapState } from "vuex";
+import { filmDetailsRoute } from "@/router/routeCreators";
+import { GETTERS } from "@/store/getters";
 
 export default {
   name: "ResultList",
@@ -22,7 +20,12 @@ export default {
     FilmCard
   },
   computed: {
-    ...mapState(["movies"])
+    ...mapState([GETTERS.MOVIES])
+  },
+  methods: {
+    filmRoute(id) {
+      return filmDetailsRoute(id);
+    }
   }
 };
 </script>

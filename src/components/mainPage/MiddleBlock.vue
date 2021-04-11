@@ -26,6 +26,7 @@ import {
   SORT_INPUT
 } from "@/core/constants";
 import { mapGetters } from "vuex";
+import { GETTERS } from "@/store/getters";
 
 export default {
   name: "MiddleBlock",
@@ -36,6 +37,8 @@ export default {
   data() {
     return {
       moviesFoundMessage: I18Y[LOCALE].MOVIES_FOUND,
+      movieFoundMessage: I18Y[LOCALE].MOVIE_FOUND,
+      noMovieFoundMessage: I18Y[LOCALE].NO_MOVIES_FOUND,
       sortByMessage: I18Y[LOCALE].SORT_BY.toUpperCase(),
       firstButtonMessage: I18Y[LOCALE].RELEASE_DATE.toUpperCase(),
       secondButtonMessage: I18Y[LOCALE].RATING.toUpperCase(),
@@ -45,14 +48,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["moviesCount"]),
+    ...mapGetters([GETTERS.MOVIES_COUNT]),
     foundMoviesMessage() {
-      if (!this.moviesCount) {
-        return "No movies found";
-      } else if (this.moviesCount === 1) {
-        return this.moviesCount + " " + I18Y[LOCALE].MOVIE_FOUND;
+      if (!this[GETTERS.MOVIES_COUNT]) {
+        return this.noMovieFoundMessage;
+      } else if (this[GETTERS.MOVIES_COUNT] === 1) {
+        return `${this[GETTERS.MOVIES_COUNT]} ${this.movieFoundMessage}`;
       }
-      return this.moviesCount + " " + I18Y[LOCALE].MOVIES_FOUND;
+      return `${this[GETTERS.MOVIES_COUNT]} ${this.movieFoundMessage}`;
     }
   }
 };

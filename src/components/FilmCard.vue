@@ -1,17 +1,17 @@
 <template>
   <div class="film-card">
     <div class="film-image">
-      <img :src="imageSrc" class="film-img" alt="film" />
+      <img :src="movie.poster_path" class="film-img" alt="film" />
     </div>
     <div class="film-card-info">
       <div class="film-card-tile">
-        {{ title }}
+        {{ movie.title }}
       </div>
       <div class="film-card-year">
-        <span class="border">{{ year }}</span>
+        <span class="border">{{ movie.release_date | parseYear }}</span>
       </div>
     </div>
-    <div class="film-card-genre">{{ genre }}</div>
+    <div class="film-card-genre">{{ movie.genres | getOneGenre }}</div>
   </div>
 </template>
 
@@ -19,10 +19,7 @@
 export default {
   name: "FilmCard",
   props: {
-    imageSrc: String,
-    title: String,
-    year: Number,
-    genre: String
+    movie: Object
   }
 };
 </script>
