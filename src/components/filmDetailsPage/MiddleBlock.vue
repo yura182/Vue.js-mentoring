@@ -9,13 +9,17 @@
 
 <script>
 import Info from "@/components/Info.vue";
+import { I18Y, LOCALE } from "@/core/i18y";
 
 export default {
+  name: "MiddleBlock",
   components: {
     Info
   },
-  props: {
-    infoMessage: String
+  data() {
+    return {
+      infoMessage: I18Y[LOCALE].FILMS_BY_DRAMA_GENRE
+    };
   }
 };
 </script>

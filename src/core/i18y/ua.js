@@ -4,6 +4,7 @@ export default {
   SEARCH_BY: "Пошук за",
   TITLE: "Назва",
   GENRE: "Жанр",
+  MOVIES_FOUND: "6 фільмів знайдено",
   SORT_BY: "Сортувати за",
   RELEASE_DATE: "Дата виходу",
   RATING: "Рейтинг",

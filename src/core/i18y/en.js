@@ -1,14 +1,12 @@
 export default {
-  FILMS_BY: "Films by",
-  SEARCH_HEADER: "Find your movie",
-  SEARCH_BY: "Search by",
-  TITLE: "Title",
-  GENRE: "Genre",
-  SORT_BY: "Sort by",
-  RELEASE_DATE: "Release Date",
-  RATING: "Rating",
-  SEARCH: "Search",
-  MOVIE_FOUND: "movie found",
-  MOVIES_FOUND: "movies found",
-  NO_MOVIES_FOUND: "No movies found"
+  FILMS_BY_DRAMA_GENRE: "Films by drama genre",
+  SEARCH_HEADER: "FIND YOUR MOVIE",
+  SEARCH_BY: "SEARCH BY",
+  TITLE: "TITLE",
+  GENRE: "GENRE",
+  MOVIES_FOUND: "6 movies found",
+  SORT_BY: "SORT BY",
+  RELEASE_DATE: "RELEASE DATE",
+  RATING: "RATING",
+  SEARCH: "SEARCH"
 };

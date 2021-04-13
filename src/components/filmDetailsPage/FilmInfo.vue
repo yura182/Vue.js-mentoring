@@ -15,23 +15,21 @@
 
       <div class="film-info">
         <div class="film-poster">
-          <img :src="movie.poster_path" class="film-img" alt="film" />
+          <img :src="imageSrc" class="film-img" alt="film" />
         </div>
         <div class="right-info">
           <div class="film-row">
-            <div class="film-title">{{ movie.title }}</div>
-            <div class="film-rating">
-              {{ movie.vote_average | parseRating }}
-            </div>
+            <div class="film-title">{{ title }}</div>
+            <div class="film-rating">{{ rating }}</div>
           </div>
-          <div class="film-genre">{{ movie.genres | parseGenres }}</div>
+          <div class="film-genre">{{ genre }}</div>
           <div class="film-row">
-            <div class="film-year">{{ movie.release_date | parseYear }}</div>
-            <div class="film-duration">{{ movie.runtime }} min</div>
+            <div class="film-year">{{ year }}</div>
+            <div class="film-duration">{{ duration }} min</div>
           </div>
 
           <div class="film-description">
-            <p>{{ movie.overview }}</p>
+            <p>{{ description }}</p>
           </div>
         </div>
       </div>
@@ -49,7 +47,13 @@ export default {
     Logo
   },
   props: {
-    movie: Object
+    imageSrc: String,
+    title: String,
+    year: Number,
+    genre: String,
+    duration: Number,
+    rating: Number,
+    description: String
   },
   data() {
     return {
@@ -101,7 +105,7 @@ export default {
 }
 
 .right-info {
-  padding-left: 50px;
+  padding-left: 30px;
   display: inline-block;
   vertical-align: top;
 }
@@ -111,7 +115,7 @@ export default {
 }
 
 .film-title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 200;
   display: inline-block;
   color: white;
@@ -133,9 +137,13 @@ export default {
 
 .film-genre {
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 100;
   letter-spacing: 1px;
+}
+
+.film-description {
+  color: white;
 }
 
 .film-year {
@@ -158,15 +166,14 @@ export default {
 .film-description {
   margin-top: 20px;
   text-align: justify;
-  width: 600px;
-  font-size: 13px;
+  width: 500px;
+  font-size: 12px;
   font-weight: 100;
-  color: white;
 }
 
 .header-top-container {
   display: flex;
-  padding: 10px 30px;
+  padding: 10px 12px;
 }
 
 .main-page-button {

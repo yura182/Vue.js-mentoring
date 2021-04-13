@@ -43,10 +43,10 @@ export default {
   },
   data() {
     return {
-      searchHeaderMessage: I18Y[LOCALE].SEARCH_HEADER.toUpperCase(),
-      searchByMessage: I18Y[LOCALE].SEARCH_BY.toUpperCase(),
-      titleMessage: I18Y[LOCALE].TITLE.toUpperCase(),
-      genreMessage: I18Y[LOCALE].GENRE.toUpperCase(),
+      searchHeaderMessage: I18Y[LOCALE].SEARCH_HEADER,
+      searchByMessage: I18Y[LOCALE].SEARCH_BY,
+      titleMessage: I18Y[LOCALE].TITLE,
+      genreMessage: I18Y[LOCALE].GENRE,
       firstOption: TITLE_OPTION,
       secondOption: GENRE_OPTION,
       options: SEARCH_BY_INPUT,
