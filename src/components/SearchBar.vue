@@ -17,13 +17,8 @@ export default {
   data() {
     return {
       searchText: "",
-      searchButtonMessage: I18Y[LOCALE].SEARCH
+      searchButtonMessage: I18Y[LOCALE].SEARCH.toUpperCase()
     };
-  },
-  methods: {
-    onSubmit() {
-      console.log("Search text: " + this.searchText);
-    }
   }
 };
 </script>
