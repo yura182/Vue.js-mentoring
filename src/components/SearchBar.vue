@@ -1,8 +1,17 @@
 <template>
   <div class="input-group">
-    <input type="text" class="form-control" v-model="searchText" />
+    <input
+      type="text"
+      class="form-control"
+      v-model="searchText"
+      @keyup.enter="submitSearch"
+    />
     <div class="films-button-group">
-      <button type="button" class="btn btn-primary films-button-search">
+      <button
+        type="button"
+        class="btn btn-primary films-button-search"
+        @click="submitSearch"
+      >
         {{ searchButtonMessage }}
       </button>
     </div>
@@ -11,6 +20,8 @@
 
 <script>
 import { I18Y, LOCALE } from "@/core/i18y";
+import { mapActions } from "vuex";
+import { ACTIONS } from "@/store/storeConstants";
 
 export default {
   name: "SearchBar",
@@ -19,6 +30,14 @@ export default {
       searchText: "",
       searchButtonMessage: I18Y[LOCALE].SEARCH.toUpperCase()
     };
+  },
+  methods: {
+    ...mapActions([ACTIONS.UPDATE_SEARCH_QUERY, ACTIONS.SEARCH_MOVIES]),
+    submitSearch() {
+      this[ACTIONS.UPDATE_SEARCH_QUERY](this.searchText.toLowerCase());
+      this[ACTIONS.SEARCH_MOVIES]();
+      this.searchText = "";
+    }
   }
 };
 </script>

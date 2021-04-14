@@ -15,6 +15,8 @@
           :firstOption="firstOption"
           :secondOption="secondOption"
           :options="options"
+          :checked="searchOption"
+          @onChangeInput="changeSearchOption"
         />
       </div>
     </div>
@@ -26,6 +28,8 @@ import Logo from "@/components/Logo.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import FilterButtons from "@/components/FilterButtons.vue";
 import { I18Y, LOCALE } from "@/core/i18y";
+import { mapActions, mapGetters } from "vuex";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
 import {
   TITLE_OPTION,
   GENRE_OPTION,
@@ -53,6 +57,15 @@ export default {
       logoFirstPart: LOGO_FIRST_PART,
       logoSecondPart: LOGO_SECOND_PART
     };
+  },
+  computed: {
+    ...mapGetters([GETTERS.GET_SEARCH_OPTION])
+  },
+  methods: {
+    ...mapActions([ACTIONS.UPDATE_SEARCH_OPTION]),
+    changeSearchOption(searchOption) {
+      this[ACTIONS.UPDATE_SEARCH_OPTION](searchOption);
+    }
   }
 };
 </script>

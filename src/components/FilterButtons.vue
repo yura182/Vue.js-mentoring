@@ -6,8 +6,10 @@
       class="btn-check"
       :name="options"
       :id="firstOption"
+      :value="firstOption"
       autocomplete="off"
-      checked
+      :checked="isChecked(firstOption)"
+      @change="changeRadioInput(firstOption)"
     />
     <label class="btn btn-primary films-radio-left" :for="firstOption">{{
       firstButtonTitle
@@ -17,7 +19,10 @@
       class="btn-check"
       :name="options"
       :id="secondOption"
+      :value="secondOption"
       autocomplete="off"
+      :checked="isChecked(secondOption)"
+      @change="changeRadioInput(secondOption)"
     />
     <label class="btn btn-primary films-radio-right" :for="secondOption">{{
       secondButtonTitle
@@ -34,7 +39,16 @@ export default {
     secondButtonTitle: String,
     firstOption: String,
     secondOption: String,
-    options: String
+    options: String,
+    checked: String
+  },
+  methods: {
+    changeRadioInput(inputValue) {
+      this.$emit("onChangeInput", inputValue);
+    },
+    isChecked(option) {
+      return this.checked === option;
+    }
   }
 };
 </script>

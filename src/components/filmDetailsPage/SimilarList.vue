@@ -1,6 +1,6 @@
 <template>
   <div class="films-list">
-    <div class="film-card" v-for="movie in movies" v-bind:key="movie.id">
+    <div class="film-card" v-for="movie in similarMovies" v-bind:key="movie.id">
       <router-link :to="filmRoute(movie.id)">
         <FilmCard :movie="movie" />
       </router-link>
@@ -10,9 +10,9 @@
 
 <script>
 import FilmCard from "@/components/FilmCard";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import { filmDetailsRoute } from "@/router/routeCreators";
-import { GETTERS } from "@/store/getters";
+import { GETTERS } from "@/store/storeConstants";
 
 export default {
   name: "SimilarList",
@@ -20,7 +20,7 @@ export default {
     FilmCard
   },
   computed: {
-    ...mapState([GETTERS.MOVIES])
+    ...mapGetters([GETTERS.GET_SIMILAR_MOVIES])
   },
   methods: {
     filmRoute(id) {

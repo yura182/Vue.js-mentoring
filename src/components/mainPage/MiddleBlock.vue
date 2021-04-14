@@ -11,6 +11,8 @@
         :firstOption="firstOption"
         :secondOption="secondOption"
         :options="options"
+        :checked="sortOption"
+        @onChangeInput="changeSortOption"
       />
     </div>
   </div>
@@ -25,8 +27,8 @@ import {
   RELEASE_DATE_OPTION,
   SORT_INPUT
 } from "@/core/constants";
-import { mapGetters } from "vuex";
-import { GETTERS } from "@/store/getters";
+import { mapGetters, mapActions } from "vuex";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
 
 export default {
   name: "MiddleBlock",
@@ -48,14 +50,20 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([GETTERS.MOVIES_COUNT]),
+    ...mapGetters([GETTERS.GET_MOVIES_COUNT, GETTERS.GET_SORT_OPTION]),
     foundMoviesMessage() {
-      if (!this[GETTERS.MOVIES_COUNT]) {
+      if (!this[GETTERS.GET_MOVIES_COUNT]) {
         return this.noMovieFoundMessage;
-      } else if (this[GETTERS.MOVIES_COUNT] === 1) {
-        return `${this[GETTERS.MOVIES_COUNT]} ${this.movieFoundMessage}`;
+      } else if (this[GETTERS.GET_MOVIES_COUNT] === 1) {
+        return `${this[GETTERS.GET_MOVIES_COUNT]} ${this.movieFoundMessage}`;
       }
-      return `${this[GETTERS.MOVIES_COUNT]} ${this.movieFoundMessage}`;
+      return `${this[GETTERS.GET_MOVIES_COUNT]} ${this.movieFoundMessage}`;
+    }
+  },
+  methods: {
+    ...mapActions([ACTIONS.UPDATE_SORT_OPTION]),
+    changeSortOption(sortOption) {
+      this[ACTIONS.UPDATE_SORT_OPTION](sortOption);
     }
   }
 };
