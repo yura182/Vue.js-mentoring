@@ -15,8 +15,8 @@
           :firstOption="firstOption"
           :secondOption="secondOption"
           :options="options"
-          :checked="searchOption"
-          @onChangeInput="changeSearchOption"
+          :checked="isChecked"
+          @[ON_CHANGE_INPUT]="changeSearchOption"
         />
       </div>
     </div>
@@ -37,6 +37,7 @@ import {
   LOGO_FIRST_PART,
   LOGO_SECOND_PART
 } from "@/core/constants";
+import { ON_CHANGE_INPUT } from "@/core/events";
 
 export default {
   name: "Header",
@@ -55,11 +56,15 @@ export default {
       secondOption: GENRE_OPTION,
       options: SEARCH_BY_INPUT,
       logoFirstPart: LOGO_FIRST_PART,
-      logoSecondPart: LOGO_SECOND_PART
+      logoSecondPart: LOGO_SECOND_PART,
+      ON_CHANGE_INPUT
     };
   },
   computed: {
-    ...mapGetters([GETTERS.GET_SEARCH_OPTION])
+    ...mapGetters([GETTERS.GET_SEARCH_OPTION]),
+    isChecked() {
+      return this[GETTERS.GET_SEARCH_OPTION];
+    }
   },
   methods: {
     ...mapActions([ACTIONS.UPDATE_SEARCH_OPTION]),

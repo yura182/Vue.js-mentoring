@@ -11,8 +11,8 @@
         :firstOption="firstOption"
         :secondOption="secondOption"
         :options="options"
-        :checked="sortOption"
-        @onChangeInput="changeSortOption"
+        :checked="isChecked"
+        @[ON_CHANGE_INPUT]="changeSortOption"
       />
     </div>
   </div>
@@ -29,6 +29,7 @@ import {
 } from "@/core/constants";
 import { mapGetters, mapActions } from "vuex";
 import { ACTIONS, GETTERS } from "@/store/storeConstants";
+import { ON_CHANGE_INPUT } from "@/core/events";
 
 export default {
   name: "MiddleBlock",
@@ -46,11 +47,15 @@ export default {
       secondButtonMessage: I18Y[LOCALE].RATING.toUpperCase(),
       firstOption: RELEASE_DATE_OPTION,
       secondOption: RATING_OPTION,
-      options: SORT_INPUT
+      options: SORT_INPUT,
+      ON_CHANGE_INPUT
     };
   },
   computed: {
     ...mapGetters([GETTERS.GET_MOVIES_COUNT, GETTERS.GET_SORT_OPTION]),
+    isChecked() {
+      return this[GETTERS.GET_SORT_OPTION];
+    },
     foundMoviesMessage() {
       if (!this[GETTERS.GET_MOVIES_COUNT]) {
         return this.noMovieFoundMessage;

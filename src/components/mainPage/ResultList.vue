@@ -1,6 +1,6 @@
 <template>
   <div class="films-list">
-    <div class="film-card" v-for="movie in searchMovies" v-bind:key="movie.id">
+    <div class="film-card" v-for="movie in movies" v-bind:key="movie.id">
       <router-link :to="filmRoute(movie.id)">
         <FilmCard :movie="movie" />
       </router-link>
@@ -20,7 +20,10 @@ export default {
     FilmCard
   },
   computed: {
-    ...mapGetters([GETTERS.GET_SEARCH_MOVIES])
+    ...mapGetters([GETTERS.GET_SEARCH_MOVIES]),
+    movies() {
+      return this[GETTERS.GET_SEARCH_MOVIES];
+    }
   },
   methods: {
     filmRoute(id) {

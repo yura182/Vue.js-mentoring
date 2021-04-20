@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { ON_CHANGE_INPUT } from "@/core/events";
+
 export default {
   name: "FilterButtons",
   props: {
@@ -44,7 +46,7 @@ export default {
   },
   methods: {
     changeRadioInput(inputValue) {
-      this.$emit("onChangeInput", inputValue);
+      this.$emit(ON_CHANGE_INPUT, inputValue);
     },
     isChecked(option) {
       return this.checked === option;
