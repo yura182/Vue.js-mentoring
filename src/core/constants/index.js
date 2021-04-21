@@ -9,6 +9,10 @@ const SORT_INPUT = "sort-option";
 const LOGO_FIRST_PART = "netflix";
 const LOGO_SECOND_PART = "roulette";
 
+const LOAD_MORE_BUTTON = "load more";
+const DEFAULT_LOAD_MOVIES = 6;
+const LOAD_MOVIES_INCREMENT = 3;
+
 export {
   TITLE_OPTION,
   GENRE_OPTION,
@@ -17,5 +21,8 @@ export {
   LOGO_SECOND_PART,
   RELEASE_DATE_OPTION,
   RATING_OPTION,
-  SORT_INPUT
+  SORT_INPUT,
+  LOAD_MORE_BUTTON,
+  DEFAULT_LOAD_MOVIES,
+  LOAD_MOVIES_INCREMENT
 };
