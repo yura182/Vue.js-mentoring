@@ -23,9 +23,9 @@ import MiddleBlock from "@/components/filmDetailsPage/MiddleBlock";
 import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
 import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { I18Y, LOCALE } from "@/core/i18y";
-import { GETTERS } from "@/store/getters";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
 
 export default {
   name: "Page",
@@ -44,14 +44,16 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([GETTERS.FIND_MOVIE_BY_ID]),
+    ...mapGetters([GETTERS.GET_MOVIE_BY_ID]),
     movie() {
-      return this[GETTERS.FIND_MOVIE_BY_ID](this.currentMovieId);
+      return this[GETTERS.GET_MOVIE_BY_ID](this.currentMovieId);
     },
     middleText() {
       const genre = this.$options.filters
         .getOneGenre(this.movie.genres)
         .toLowerCase();
+
+      this[ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE](genre);
 
       return `${this.messageFirstPart} ${genre} ${this.messageLastPart}`;
     },
@@ -59,6 +61,9 @@ export default {
       window.scrollTo(0, 0);
       return this.$route.params.id;
     }
+  },
+  methods: {
+    ...mapActions([ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE])
   }
 };
 </script>

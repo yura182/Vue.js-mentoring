@@ -10,9 +10,9 @@
 
 <script>
 import FilmCard from "@/components/FilmCard";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import { filmDetailsRoute } from "@/router/routeCreators";
-import { GETTERS } from "@/store/getters";
+import { GETTERS } from "@/store/storeConstants";
 
 export default {
   name: "SimilarList",
@@ -20,7 +20,10 @@ export default {
     FilmCard
   },
   computed: {
-    ...mapState([GETTERS.MOVIES])
+    ...mapGetters([GETTERS.GET_SIMILAR_MOVIES]),
+    movies() {
+      return this[GETTERS.GET_SIMILAR_MOVIES];
+    }
   },
   methods: {
     filmRoute(id) {
