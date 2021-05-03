@@ -5,6 +5,7 @@
         <FilmCard :movie="movie" />
       </router-link>
     </div>
+    <LoadMore v-if="showButton" />
   </div>
 </template>
 
@@ -13,14 +14,22 @@ import FilmCard from "@/components/FilmCard";
 import { mapGetters } from "vuex";
 import { filmDetailsRoute } from "@/router/routeCreators";
 import { GETTERS } from "@/store/storeConstants";
+import LoadMore from "@/components/LoadMore";
 
 export default {
   name: "ResultList",
   components: {
-    FilmCard
+    FilmCard,
+    LoadMore
   },
   computed: {
-    ...mapGetters([GETTERS.GET_SEARCH_MOVIES]),
+    ...mapGetters([
+      GETTERS.GET_SEARCH_MOVIES,
+      GETTERS.IS_LOAD_MORE_BUTTON_SHOWN
+    ]),
+    showButton() {
+      return this[GETTERS.IS_LOAD_MORE_BUTTON_SHOWN];
+    },
     movies() {
       return this[GETTERS.GET_SEARCH_MOVIES];
     }
