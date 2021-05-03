@@ -32,10 +32,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions([ACTIONS.UPDATE_SEARCH_QUERY, ACTIONS.SEARCH_MOVIES]),
+    ...mapActions([
+      ACTIONS.UPDATE_SEARCH_QUERY,
+      ACTIONS.SEARCH_MOVIES,
+      ACTIONS.SEARCH_FILMS
+    ]),
     submitSearch() {
       this[ACTIONS.UPDATE_SEARCH_QUERY](this.searchText.toLowerCase());
-      this[ACTIONS.SEARCH_MOVIES]();
+      this[ACTIONS.SEARCH_FILMS]();
       this.searchText = "";
     }
   }

@@ -1,7 +1,12 @@
 <template>
   <div class="film-card">
     <div class="film-image">
-      <img :src="movie.poster_path" class="film-img" alt="film" />
+      <img
+        :src="movie.poster_path"
+        class="film-img"
+        alt="film"
+        @error="handlePosterError"
+      />
     </div>
     <div class="film-card-info">
       <div class="film-card-tile">
@@ -16,10 +21,15 @@
 </template>
 
 <script>
+import handlePosterError from "@/core/errorHandler/posterErrorHandler";
+
 export default {
   name: "FilmCard",
   props: {
     movie: Object
+  },
+  methods: {
+    handlePosterError
   }
 };
 </script>

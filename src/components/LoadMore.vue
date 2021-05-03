@@ -23,8 +23,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions([ACTIONS.UPDATE_MOVIES_SHOWN]),
+    ...mapActions([ACTIONS.UPDATE_MOVIES_SHOWN, ACTIONS.LOAD_MORE_MOVIES]),
     loadMore() {
+      this[ACTIONS.LOAD_MORE_MOVIES]();
       this[ACTIONS.UPDATE_MOVIES_SHOWN]();
     }
   }
