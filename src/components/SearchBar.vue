@@ -20,8 +20,9 @@
 
 <script>
 import { I18Y, LOCALE } from "@/core/i18y";
-import { mapActions } from "vuex";
-import { ACTIONS } from "@/store/storeConstants";
+import { mapActions, mapGetters } from "vuex";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
+import router from "@/router";
 
 export default {
   name: "SearchBar",
@@ -38,10 +39,20 @@ export default {
       ACTIONS.SEARCH_FILMS
     ]),
     submitSearch() {
+      router.push({
+        name: "Home",
+        query: {
+          query: this.searchText.toLowerCase(),
+          searchBy: this[GETTERS.GET_SEARCH_OPTION]
+        }
+      });
       this[ACTIONS.UPDATE_SEARCH_QUERY](this.searchText.toLowerCase());
       this[ACTIONS.SEARCH_FILMS]();
       this.searchText = "";
     }
+  },
+  computed: {
+    ...mapGetters([GETTERS.GET_SEARCH_OPTION])
   }
 };
 </script>
