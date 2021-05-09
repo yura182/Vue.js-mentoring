@@ -59,11 +59,11 @@ export default {
     [ACTIONS.SEARCH_FILMS]({ dispatch, commit, rootGetters }) {
       commit(MUTATIONS.UPDATE_SEARCH_MOVIE, []);
       dispatch(ACTIONS.START_API_CALL);
-      ApiService.getInitialMovies(
-        rootGetters[GETTERS.GET_SORT_OPTION],
-        rootGetters[GETTERS.GET_SEARCH_OPTION],
-        rootGetters[GETTERS.GET_SEARCH_QUERY]
-      )
+      ApiService.getInitialMovies({
+        sortOption: rootGetters[GETTERS.GET_SORT_OPTION],
+        searchByOption: rootGetters[GETTERS.GET_SEARCH_OPTION],
+        query: rootGetters[GETTERS.GET_SEARCH_QUERY]
+      })
         .then(movies => {
           commit(MUTATIONS.UPDATE_SEARCH_MOVIE, movies.data);
           commit(MUTATIONS.UPDATE_MOVIES_COUNT, movies.total);
@@ -102,13 +102,13 @@ export default {
     },
     [ACTIONS.LOAD_MORE_MOVIES]({ dispatch, commit, rootGetters }) {
       dispatch(ACTIONS.START_API_CALL);
-      ApiService.getInitialMovies(
-        rootGetters[GETTERS.GET_SORT_OPTION],
-        rootGetters[GETTERS.GET_SEARCH_OPTION],
-        rootGetters[GETTERS.GET_SEARCH_QUERY],
-        LOAD_MOVIES_INCREMENT,
-        rootGetters[GETTERS.MOVIE_SHOWN]
-      )
+      ApiService.getInitialMovies({
+        sortOption: rootGetters[GETTERS.GET_SORT_OPTION],
+        searchByOption: rootGetters[GETTERS.GET_SEARCH_OPTION],
+        query: rootGetters[GETTERS.GET_SEARCH_QUERY],
+        limit: LOAD_MOVIES_INCREMENT,
+        offset: rootGetters[GETTERS.MOVIE_SHOWN]
+      })
         .then(movies => {
           commit(MUTATIONS.ADD_MOVIES, movies.data);
         })

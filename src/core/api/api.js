@@ -18,13 +18,13 @@ const ApiService = {
   getMovies() {
     return axios.get(MOVIES_ENDPOINT).then(response => response.data);
   },
-  getInitialMovies(
+  getInitialMovies({
     sortOption,
     searchByOption,
     query,
     limit = DEFAULT_SEARCH_LIMIT,
     offset
-  ) {
+  } = {}) {
     return axios
       .get(MOVIES_ENDPOINT, {
         params: {
