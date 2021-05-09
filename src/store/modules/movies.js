@@ -60,9 +60,7 @@ export default {
       commit(MUTATIONS.UPDATE_SEARCH_MOVIE, []);
       dispatch(ACTIONS.START_API_CALL);
       ApiService.getInitialMovies({
-        sortOption: rootGetters[GETTERS.GET_SORT_OPTION],
-        searchByOption: rootGetters[GETTERS.GET_SEARCH_OPTION],
-        query: rootGetters[GETTERS.GET_SEARCH_QUERY]
+        sortOption: rootGetters[GETTERS.GET_SORT_OPTION]
       })
         .then(movies => {
           commit(MUTATIONS.UPDATE_SEARCH_MOVIE, movies.data);
@@ -104,8 +102,6 @@ export default {
       dispatch(ACTIONS.START_API_CALL);
       ApiService.getInitialMovies({
         sortOption: rootGetters[GETTERS.GET_SORT_OPTION],
-        searchByOption: rootGetters[GETTERS.GET_SEARCH_OPTION],
-        query: rootGetters[GETTERS.GET_SEARCH_QUERY],
         limit: LOAD_MOVIES_INCREMENT,
         offset: rootGetters[GETTERS.MOVIE_SHOWN]
       })

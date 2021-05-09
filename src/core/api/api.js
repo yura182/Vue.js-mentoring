@@ -9,6 +9,7 @@ import {
   DEFAULT_TIME_OUT
 } from "@/core/api/constants";
 import { GENRE_OPTION, SIMILAR_MOVIES_LIMIT } from "@/core/constants";
+import router from "@/router";
 
 const ApiService = {
   init() {
@@ -18,19 +19,14 @@ const ApiService = {
   getMovies() {
     return axios.get(MOVIES_ENDPOINT).then(response => response.data);
   },
-  getInitialMovies({
-    sortOption,
-    searchByOption,
-    query,
-    limit = DEFAULT_SEARCH_LIMIT,
-    offset
-  } = {}) {
+  getInitialMovies({ sortOption, limit = DEFAULT_SEARCH_LIMIT, offset } = {}) {
+    const searchByFromRoute = router.currentRoute.query.searchBy;
     return axios
       .get(MOVIES_ENDPOINT, {
         params: {
           sortBy: SORT_OPTIONS[sortOption],
-          searchBy: SEARCH_OPTIONS[searchByOption],
-          search: query,
+          searchBy: SEARCH_OPTIONS[searchByFromRoute],
+          search: router.currentRoute.query.query,
           sortOrder: DEFAULT_SORT_ORDER,
           limit: limit,
           offset: offset
