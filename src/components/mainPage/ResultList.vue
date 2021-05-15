@@ -6,21 +6,24 @@
       </router-link>
     </div>
     <LoadMore v-if="showButton" />
+    <Error />
   </div>
 </template>
 
 <script>
 import FilmCard from "@/components/FilmCard";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { filmDetailsRoute } from "@/router/routeCreators";
-import { GETTERS } from "@/store/storeConstants";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
 import LoadMore from "@/components/LoadMore";
+import Error from "@/components/Error";
 
 export default {
   name: "ResultList",
   components: {
     FilmCard,
-    LoadMore
+    LoadMore,
+    Error
   },
   computed: {
     ...mapGetters([
@@ -35,9 +38,13 @@ export default {
     }
   },
   methods: {
+    ...mapActions([ACTIONS.SEARCH_FILMS]),
     filmRoute(id) {
       return filmDetailsRoute(id);
     }
+  },
+  mounted() {
+    this[ACTIONS.SEARCH_FILMS]();
   }
 };
 </script>

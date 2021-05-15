@@ -13,9 +13,14 @@
         </div>
       </div>
 
-      <div class="film-info">
+      <div class="film-info" v-if="isMovieLoaded">
         <div class="film-poster">
-          <img :src="movie.poster_path" class="film-img" alt="film" />
+          <img
+            :src="movie.poster_path"
+            class="film-img"
+            alt="film"
+            @error="handlePosterError"
+          />
         </div>
         <div class="right-info">
           <div class="film-row">
@@ -27,7 +32,7 @@
           <div class="film-genre">{{ movie.genres | parseGenres }}</div>
           <div class="film-row">
             <div class="film-year">{{ movie.release_date | parseYear }}</div>
-            <div class="film-duration">{{ movie.runtime }} min</div>
+            <div class="film-duration">{{ movieRuntime(movie.runtime) }}</div>
           </div>
 
           <div class="film-description">
@@ -42,20 +47,51 @@
 <script>
 import Logo from "@/components/Logo.vue";
 import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
+import { mapActions, mapGetters } from "vuex";
+import handlePosterError from "@/core/errorHandler/posterErrorHandler";
+import { ACTIONS, GETTERS } from "@/store/storeConstants";
 
 export default {
   name: "FilmInfo",
   components: {
     Logo
   },
-  props: {
-    movie: Object
-  },
   data() {
     return {
       logoFirstPart: LOGO_FIRST_PART,
       logoSecondPart: LOGO_SECOND_PART
     };
+  },
+  computed: {
+    ...mapGetters([GETTERS.IS_MOVIE_BY_ID_LOADED, GETTERS.CURRENT_MOVIE]),
+    movie() {
+      return this[GETTERS.CURRENT_MOVIE];
+    },
+    currentMovieId() {
+      window.scrollTo(0, 0);
+      return this.$route.params.id;
+    },
+    isMovieLoaded() {
+      return this[GETTERS.IS_MOVIE_BY_ID_LOADED];
+    }
+  },
+  watch: {
+    currentMovieId: function(newId) {
+      this[ACTIONS.FIND_MOVIE_BY_ID](newId);
+    }
+  },
+  methods: {
+    ...mapActions([ACTIONS.FIND_MOVIE_BY_ID]),
+    movieRuntime(runtime) {
+      if (runtime) {
+        return `${runtime} min`;
+      }
+      return "";
+    },
+    handlePosterError
+  },
+  created() {
+    this[ACTIONS.FIND_MOVIE_BY_ID](this.currentMovieId);
   }
 };
 </script>

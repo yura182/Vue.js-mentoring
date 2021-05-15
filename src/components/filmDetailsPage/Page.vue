@@ -1,7 +1,8 @@
 <template>
   <div class="main-block">
+    <Loading />
     <div class="firs-block">
-      <FilmInfo :movie="movie" />
+      <FilmInfo />
     </div>
     <div class="second-block">
       <MiddleBlock :infoMessage="middleText" />
@@ -23,9 +24,10 @@ import MiddleBlock from "@/components/filmDetailsPage/MiddleBlock";
 import SimilarList from "@/components/filmDetailsPage/SimilarList";
 import Logo from "@/components/Logo";
 import { LOGO_FIRST_PART, LOGO_SECOND_PART } from "@/core/constants";
-import { mapGetters, mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { I18Y, LOCALE } from "@/core/i18y";
 import { ACTIONS, GETTERS } from "@/store/storeConstants";
+import Loading from "@/components/Loading";
 
 export default {
   name: "Page",
@@ -33,7 +35,8 @@ export default {
     FilmInfo,
     MiddleBlock,
     SimilarList,
-    Logo
+    Logo,
+    Loading
   },
   data() {
     return {
@@ -44,26 +47,30 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([GETTERS.GET_MOVIE_BY_ID]),
-    movie() {
-      return this[GETTERS.GET_MOVIE_BY_ID](this.currentMovieId);
-    },
+    ...mapGetters([GETTERS.IS_MOVIE_BY_ID_LOADED, GETTERS.CURRENT_MOVIE]),
     middleText() {
-      const genre = this.$options.filters
-        .getOneGenre(this.movie.genres)
-        .toLowerCase();
+      if (this[GETTERS.IS_MOVIE_BY_ID_LOADED]) {
+        const genre = this.$options.filters.getOneGenre(
+          this[GETTERS.CURRENT_MOVIE].genres
+        );
 
-      this[ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE](genre);
+        this[ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE](genre);
 
-      return `${this.messageFirstPart} ${genre} ${this.messageLastPart}`;
-    },
-    currentMovieId() {
-      window.scrollTo(0, 0);
-      return this.$route.params.id;
+        return `${this.messageFirstPart} ${genre} ${this.messageLastPart}`;
+      }
+      return "";
     }
   },
   methods: {
-    ...mapActions([ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE])
+    ...mapActions([
+      ACTIONS.UPDATE_SIMILAR_MOVIES_GENRE,
+      ACTIONS.SIMILAR_MOVIES
+    ]),
+    updateSimilarMovies() {
+      if (this[GETTERS.IS_MOVIE_BY_ID_LOADED]) {
+        this[ACTIONS.SIMILAR_MOVIES]();
+      }
+    }
   }
 };
 </script>

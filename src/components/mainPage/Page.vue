@@ -1,5 +1,6 @@
 <template>
   <div class="main-block">
+    <Loading />
     <div class="firs-block">
       <Header />
     </div>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading";
 import Header from "@/components/mainPage/Header";
 import MiddleBlock from "@/components/mainPage/MiddleBlock";
 import ResultList from "@/components/mainPage/ResultList";
@@ -30,7 +32,8 @@ export default {
     Header,
     MiddleBlock,
     ResultList,
-    Logo
+    Logo,
+    Loading
   },
   data() {
     return {

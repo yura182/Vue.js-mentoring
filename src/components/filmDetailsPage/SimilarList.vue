@@ -1,5 +1,6 @@
 <template>
   <div class="films-list">
+    <Error />
     <div class="film-card" v-for="movie in movies" v-bind:key="movie.id">
       <router-link :to="filmRoute(movie.id)">
         <FilmCard :movie="movie" />
@@ -13,10 +14,12 @@ import FilmCard from "@/components/FilmCard";
 import { mapGetters } from "vuex";
 import { filmDetailsRoute } from "@/router/routeCreators";
 import { GETTERS } from "@/store/storeConstants";
+import Error from "@/components/Error";
 
 export default {
   name: "SimilarList",
   components: {
+    Error,
     FilmCard
   },
   computed: {

@@ -8,7 +8,12 @@ export const STATE = {
   SEARCH_OPTION: "searchOption",
   SORT_OPTION: "sortOption",
   SIMILAR_MOVIE_GENRE: "similarMovieGenre",
-  MOVIE_SHOWN: "moviesShown"
+  MOVIE_SHOWN: "moviesShown",
+  IS_MOVIE_BY_ID_LOADED: "isMovieByIdLoaded",
+  IS_DATA_LOADING: "isDataLoading",
+  IS_API_ERROR: "isApiError",
+  CURRENT_MOVIE: "currentMovie",
+  MOVIES_COUNT: "moviesCount"
 };
 
 export const GETTERS = {
@@ -21,7 +26,11 @@ export const GETTERS = {
   GET_SEARCH_QUERY: "searchQuery",
   GET_SIMILAR_MOVIE_GENRE: "similarMovieGenre",
   IS_LOAD_MORE_BUTTON_SHOWN: "isLoadMoreButtonShown",
-  MOVIE_SHOWN: "moviesShown"
+  MOVIE_SHOWN: "moviesShown",
+  IS_MOVIE_BY_ID_LOADED: "isMovieByIdLoaded",
+  IS_API_ERROR: "isApiError",
+  CURRENT_MOVIE: "currentMovie",
+  IS_DATA_LOADING: "isDataLoading"
 };
 
 export const MUTATIONS = {
@@ -30,7 +39,16 @@ export const MUTATIONS = {
   UPDATE_SEARCH_MOVIE: "UPDATE_SEARCH_MOVIE",
   UPDATE_SORT_OPTION: "UPDATE_SORT_OPTION",
   UPDATE_SIMILAR_MOVIES_GENRE: "UPDATE_SIMILAR_MOVIES_GENRE",
-  UPDATE_MOVIES_SHOWN: "UPDATE_MOVIES_SHOWN"
+  UPDATE_MOVIES_SHOWN: "UPDATE_MOVIES_SHOWN",
+  UPDATE_CURRENT_MOVIE: "UPDATE_CURRENT_MOVIE",
+  UPDATE_IS_MOVIE_BY_ID_LOADED: "UPDATE_IS_MOVIE_BY_ID_LOADED",
+  UPDATE_SIMILAR_MOVIES: "UPDATE_SIMILAR_MOVIES",
+  UPDATE_IS_DATA_LOADING: "UPDATE_IS_DATA_LOADING",
+  UPDATE_IS_API_ERROR: "UPDATE_IS_API_ERROR",
+  UPDATE_MOVIES_COUNT: "UPDATE_MOVIES_COUNT",
+  ADD_MOVIES: "ADD_MOVIES",
+  ROLL_BACK_MOVIES_SHOWN: "ROLL_BACK_MOVIES_SHOWN",
+  RESET_MOVIES_SHOWN: "RESET_MOVIES_SHOWN"
 };
 
 export const ACTIONS = {
@@ -38,8 +56,12 @@ export const ACTIONS = {
   UPDATE_SEARCH_OPTION: "updateSearchOption",
   UPDATE_SORT_OPTION: "updateSortOption",
   UPDATE_SIMILAR_MOVIES_GENRE: "updateSimilarMoviesGenre",
-  SEARCH_MOVIES: "searchMovies",
-  UPDATE_MOVIES_SHOWN: "updateMoviesShown"
+  SEARCH_FILMS: "searchFilms",
+  UPDATE_MOVIES_SHOWN: "updateMoviesShown",
+  FIND_MOVIE_BY_ID: "findMovieById",
+  SIMILAR_MOVIES: "similarMovies",
+  LOAD_MORE_MOVIES: "loadMoreMovies",
+  START_API_CALL: "startApiCall"
 };
 
 export const EMPTY_STRING = "";

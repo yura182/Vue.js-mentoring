@@ -5,7 +5,9 @@ import dataFormattingPlugin from "@/plugins/dataFormatting";
 
 import "./app.scss";
 import router from "./router";
+import ApiService from "@/core/api/api";
 
+ApiService.init();
 Vue.config.productionTip = false;
 Vue.use(dataFormattingPlugin);
 

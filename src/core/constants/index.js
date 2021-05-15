@@ -12,6 +12,11 @@ const LOGO_SECOND_PART = "roulette";
 const LOAD_MORE_BUTTON = "load more";
 const DEFAULT_LOAD_MOVIES = 6;
 const LOAD_MOVIES_INCREMENT = 3;
+const SIMILAR_MOVIES_LIMIT = 12;
+
+const LOADER_TYPE = "dots";
+
+const ERROR_MESSAGE = "Something went wrong. Please try again";
 
 export {
   TITLE_OPTION,
@@ -24,5 +29,8 @@ export {
   SORT_INPUT,
   LOAD_MORE_BUTTON,
   DEFAULT_LOAD_MOVIES,
-  LOAD_MOVIES_INCREMENT
+  LOAD_MOVIES_INCREMENT,
+  ERROR_MESSAGE,
+  SIMILAR_MOVIES_LIMIT,
+  LOADER_TYPE
 };
